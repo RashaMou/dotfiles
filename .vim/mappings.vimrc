@@ -6,6 +6,27 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+"====[ Toggle visibility of naughty characters ]============
+
+" Make naughty characters visible...
+set lcs=tab:══»,trail:␣,nbsp:˷
+"   Tabs	shown	thusly	and	so
+"   Trailing whitespace    
+"   Non-breaking space
+
+highlight InvisibleSpaces ctermfg=Black ctermbg=Black
+call matchadd('InvisibleSpaces', '\S\@<=\s\+\%#\ze\s*$')
+
+augroup VisibleNaughtiness
+    autocmd!
+    autocmd BufEnter  *       set list
+    autocmd BufEnter  *       set list
+    autocmd BufEnter  *.txt   set nolist
+    autocmd BufEnter  *.vp*   set nolist
+    autocmd BufEnter  *       if !&modifiable
+    autocmd BufEnter  *           set nolist
+    autocmd BufEnter  *       endif
+augroup END
 "--------------------
 " BUFFERS
 "--------------------
