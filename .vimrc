@@ -74,3 +74,4 @@ iabbrev upt use Path::Tiny;
 iabbrev umm use ME::Modern;
 iabbrev um use ME;
 iabbrev sd say Dumper
+iabbrev gold use Getopt::Long::Descriptive;

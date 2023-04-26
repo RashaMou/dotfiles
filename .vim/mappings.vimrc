@@ -53,11 +53,6 @@ nmap  S  :%s//g<LEFT><LEFT>
 " search for pattern using /, then enter and global sub with M
 nmap <expr>  M  ':%s/' . @/ . '//g<LEFT><LEFT>'
 
-"-------------------------------------
-" cb changes the whole word 
-"-------------------------------------
-nnoremap cb cvb
-
 "=====[ Make Visual modes work better ]==================
 
 " Visual Block mode is far more useful that Visual mode (so swap the commands)...
@@ -73,6 +68,12 @@ set virtualedit=block
 " select whole line
 nnoremap <leader><leader> <S-v>
 
+" Use space to jump down a page (like browsers do)...
+nnoremap   <Space> <PageDown>
+xnoremap   <Space> <PageDown>
+
+" delete and paste without losing what's already in your register
+xnoremap <leader>p _dP
 
 " Use space to jump down a page (like browsers do)...
 nnoremap   <Space> <PageDown>
