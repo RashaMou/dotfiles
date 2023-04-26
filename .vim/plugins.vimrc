@@ -6,8 +6,6 @@ Plug 'voldikss/vim-floaterm'
 Plug 'inkarkat/vim-ingo-library'
 " Add file management commands like :Delete :Move :Rename
 Plug 'tpope/vim-eunuch'
-" smart visual selection
-Plug 'terryma/vim-expand-region'
 " show css colors 
 Plug 'ap/vim-css-color'
 " fuzzy finder
@@ -29,10 +27,9 @@ Plug 'mechatroner/rainbow_csv'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
-" YCM
-" Plug 'ycm-core/YouCompleteMe'
 " snippets
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'thomasfaingnaert/vim-lsp-snippets'
 Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 " LSP

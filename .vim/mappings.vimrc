@@ -34,27 +34,12 @@ nnoremap <tab> :bnext<CR>
 nnoremap , :Buffers<CR> 
 
 "--------------------
-" VISUAL MODE
-"--------------------
-nnoremap <leader><leader> <S-v>
-
-"--------------------
-" INSERT MODE REMAPS
-"--------------------
-inoremap <C-j> <C-o>j
-
-"--------------------
 " SWITCH BUFFERS
 "--------------------
 nnoremap <leader>g :bn<cr>
 nnoremap bp :bp<cr>
+nnoremap bp :bp<cr>
 nnoremap bd :bd<cr>
-
-"------------------------
-" NEWLINE W/O INSERT MODE 
-"------------------------
-nnoremap <BS> O<Esc>
-nnoremap <CR> o<Esc>
 
 "--------------------
 " SAVE
@@ -68,16 +53,25 @@ nmap  S  :%s//g<LEFT><LEFT>
 " search for pattern using /, then enter and global sub with M
 nmap <expr>  M  ':%s/' . @/ . '//g<LEFT><LEFT>'
 
-"-------------------------------------
-" Open current file in default program
-"-------------------------------------
-nmap <leader>x :!xdg-open %<CR><CR>
+"=====[ Make Visual modes work better ]==================
 
-"-------------------------------------
-" cb changes the whole word 
-"-------------------------------------
-nnoremap cb cvb
-"-------------------------------------
-"-------------------------------------
+" Visual Block mode is far more useful that Visual mode (so swap the commands)...
+nnoremap v <C-V>
+nnoremap <C-V> v
 
+xnoremap v <C-V>
+xnoremap <C-V> v
+
+"Square up visual selections...
+set virtualedit=block
+
+" select whole line
+nnoremap <leader><leader> <S-v>
+
+" Use space to jump down a page (like browsers do)...
+nnoremap   <Space> <PageDown>
+xnoremap   <Space> <PageDown>
+
+" delete and paste without losing what's already in your register
+xnoremap <leader>p _dP
 
