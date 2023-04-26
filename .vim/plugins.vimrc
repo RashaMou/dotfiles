@@ -6,8 +6,6 @@ Plug 'voldikss/vim-floaterm'
 Plug 'inkarkat/vim-ingo-library'
 " Add file management commands like :Delete :Move :Rename
 Plug 'tpope/vim-eunuch'
-" smart visual selection
-Plug 'terryma/vim-expand-region'
 " show css colors 
 Plug 'ap/vim-css-color'
 " fuzzy finder

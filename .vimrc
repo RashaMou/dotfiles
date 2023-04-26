@@ -66,6 +66,11 @@ if has("termguicolors")
 endif
 
 "--------------------
-" TODO FUNCTION
+" abbreviation
 "--------------------
 iabbrev --t TODO(rasha): <C-R>=strftime("%Y-%m-%d")<CR>
+iabbrev uddc use Data::Dumper::Concise;
+iabbrev upt use Path::Tiny;
+iabbrev umm use ME::Modern;
+iabbrev um use ME;
+iabbrev sd say Dumper
