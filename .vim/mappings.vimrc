@@ -1,7 +1,6 @@
 "--------------------
 " SPLIT NAV
 "--------------------
-
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -10,7 +9,6 @@ nnoremap <C-l> <C-w>l
 "--------------------
 " BUFFERS
 "--------------------
-
 nnoremap <tab> :bnext<CR>
 nnoremap , :Buffers<CR> 
 
@@ -42,15 +40,23 @@ nnoremap <CR> o<Esc>
 "--------------------
 nnoremap we :w<CR>
 
+"--------------------
+" GLOBAL SUBSTITUTION 
+"--------------------
+nmap  S  :%s//g<LEFT><LEFT>
+" search for pattern using /, then enter and global sub with M
+nmap <expr>  M  ':%s/' . @/ . '//g<LEFT><LEFT>'
+
 "-------------------------------------
 " Open current file in default program
 "-------------------------------------
 nmap <leader>x :!xdg-open %<CR><CR>
 
-nnoremap cb cvb
-
 "-------------------------------------
-" Ultisnips 
+" cb changes the whole word 
+"-------------------------------------
+nnoremap cb cvb
+"-------------------------------------
 "-------------------------------------
 
 

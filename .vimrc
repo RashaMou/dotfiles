@@ -13,15 +13,14 @@ source $HOME/.vim/mappings.vimrc
 autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab  " Set spaces to 2 when yaml file
 
 "--------------------
-" USER COMMANDS
-"--------------------
-" open specific files in new tab
-command -nargs=0 Diary :tabnew ~/codediary/inbox.md
-command -nargs=0 Notes :tabnew ~/fastmail/notes/inbox.md
-
-"--------------------
 " THEME SETTINGS
 "--------------------
+augroup nord-theme-overrides
+  autocmd!
+  " Use 'nord7' as foreground color for Vim comment titles.
+  autocmd ColorScheme nord highlight vimCommentTitle ctermfg=14 guifg=#8FBCBB
+augroup END
+
 colorscheme nord
 let macvim_skip_colorscheme=1
 
