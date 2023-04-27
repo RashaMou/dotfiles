@@ -74,13 +74,6 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 "--------------------
-" PLUGIN RUNTIMES
-"--------------------
-
-set runtimepath^=~/.vim/vimplugs/bundle/ctrlp.vim
-set runtimepath+=~/.vim/bundle/auto-pairs
-
-"--------------------
 " PLUGIN LETS
 "--------------------
 
@@ -91,31 +84,21 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 "--------------------
 " PLUGIN MAPPINGS
 "--------------------
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+
+" fzf ignore node_modules and .git
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+noremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 let g:asyncomplete_auto_completeopt = 0
 set completeopt=menuone,noinsert,noselect,preview
 
-" Perl LSP for vim-lsp
-if executable('pls')
-    "cpm install -gv PLS 
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pls',
-        \ 'cmd': {server_info->['pls']},
-        \ 'allowlist': ['perl'],
-        \ })
-endif
 
 " Git blame
 nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
-
-" v selects character, another v selects word, third v selects para
-" <C-v> goes back one
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 " open fzf
 nnoremap <leader>o :Files<CR>
@@ -146,3 +129,52 @@ nnoremap <Leader>/ :Ack!<Space>
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
 
+" LSP
+" Perl LSP for vim-lsp
+if executable('pls')
+    "cpm install -gv PLS 
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pls',
+        \ 'cmd': {server_info->['pls']},
+        \ 'allowlist': ['perl'],
+        \ })
+endif
+
+" python LSP
+if executable('pylsp')
+    " pip install python-lsp-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END

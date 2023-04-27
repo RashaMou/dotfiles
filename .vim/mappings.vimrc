@@ -30,7 +30,6 @@ augroup END
 "--------------------
 " BUFFERS
 "--------------------
-nnoremap <tab> :bnext<CR>
 nnoremap , :Buffers<CR> 
 
 "--------------------
