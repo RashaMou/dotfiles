@@ -1,0 +1,12 @@
+# jmap client call
+snippet jmapreq "JMAP client request"
+my $res = $jmap->request([
+		[
+			'${1:call}/${2:method}' => {
+				${3:action} => { 
+				  ${4:property}	
+				}
+			},'a'
+		]
+]);
+endsnippet
