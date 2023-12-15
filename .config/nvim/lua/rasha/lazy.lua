@@ -16,9 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 --- sets up all plugins in rasha.plugin
 require("lazy").setup({ { import = "rasha.plugins" } }, {
-  install = {
-    colorscheme = { "nightfly" },
-  },
   checker = {
     enabled = true,
     notify = false,

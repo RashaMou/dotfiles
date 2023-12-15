@@ -11,7 +11,10 @@ keymap.set("n", "<C-k>", "<C-w>k")
 keymap.set("n", "<C-l>", "<C-w>l")
 
 -- buffers
-keymap.set("n", ",", vim.cmd.BuffergatorOpen) 
+keymap.set("n", "<C-,>", vim.cmd.BuffergatorOpen)
+keymap.set("n", "<C-l>", vim.cmd.BuffergatorClose)
+keymap.set("n", "<C-m>", vim.cmd.bnext)
+keymap.set("n", "<C-n>", vim.cmd.bprev)
 
 -- global substitution
 keymap.set("n", "S",  ":%s///g<LEFT><LEFT><LEFT>")
