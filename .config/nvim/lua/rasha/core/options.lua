@@ -22,6 +22,9 @@ opt.smartcase = true
 
 -- line wrapping
 opt.wrap = true
+opt.textwidth = 80
+opt.signcolumn = "yes"
+opt.colorcolumn = "80"
 
 -- mouse settings
 opt.mouse = "a"
@@ -32,12 +35,11 @@ opt.swapfile = false
 -- clipboard
 opt.clipboard = "unnamedplus" -- sync with system clipboard
 
--- appearance 
+-- appearance
 opt.termguicolors = true
 
+-- navigation
 opt.scrolloff = 8
-opt.signcolumn = "yes"
-opt.colorcolumn = "80"
 
 -- make naughty characters visible
 opt.list = true
@@ -48,6 +50,6 @@ opt.listchars = {
 }
 
 -- searching
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 

@@ -7,14 +7,20 @@ keymap.set("n", "<leader>pv", vim.cmd.Ex)
 keymap.set("n", "<C-h>", "<C-w>h")
 keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-k>", "<C-w>k")
+keymap.set("n", "<C-l>", "<C-w>l")
 
 keymap.set("n", "<C-l>", "<C-w>l")
 
 -- buffers
-keymap.set("n", "<C-,>", vim.cmd.BuffergatorOpen)
-keymap.set("n", "<C-l>", vim.cmd.BuffergatorClose)
 keymap.set("n", "<C-m>", vim.cmd.bnext)
 keymap.set("n", "<C-n>", vim.cmd.bprev)
+keymap.set("n", ",", vim.cmd.Buffers)
+
+-- grep
+keymap.set("n", "<leader>f", vim.cmd.Rg)
+
+-- files
+keymap.set("n", "<leader>o", vim.cmd.Files)
 
 -- global substitution
 keymap.set("n", "S",  ":%s///g<LEFT><LEFT><LEFT>")
