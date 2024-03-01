@@ -1,9 +1,7 @@
 [user]
 	name = Rasha Moumneh
   email = rasha@fastmailteam.com
-[github]
-	user = RashaMou
-	token = token
+
 [color]
     ui = true
 
@@ -22,25 +20,24 @@
     added = yellow
     changed = green
     untracked = red
+
 [push]
 	default = current
+
 [core]
-	excludesfile = /Users/rasha/.gitignore
+	excludesfile = /Users/rasha/.gitignore_global
+  editor = nvim
+
 [init]
 	defaultBranch = main
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-[interactive]
-    diffFilter = delta --color-only --features=interactive
+
 [delta]
     line-numbers = true
     side-by-side = false
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     hunk-headder-decoration-style = pink box
+
 [alias]
 	br = branch
 	st = status
@@ -54,9 +51,12 @@
   logfile = log --oneline --name-only
   shove = push --force-with-lease
   commend = commit --amend --no-edit
+
 [submodule]
   recurse = true
+
 [safe]
   directory = /Users/rasha/fm-box
+
 [pull]
 	rebase = true

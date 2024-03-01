@@ -1,4 +1,5 @@
 local opt = vim.opt
+local cmd = vim.cmd
 
 -- line numbers
 opt.number = true
@@ -53,3 +54,11 @@ opt.listchars = {
 opt.hlsearch = true
 opt.incsearch = true
 
+-- abbreviations
+cmd('abbreviate --t TODO(rasha): <C-R>=strftime("%Y-%m-%d")<CR>')
+cmd('abbreviate uddc use Data::Dumper::Concise;')
+cmd('abbreviate upt use Path::Tiny;')
+cmd('abbreviate umm use ME::Modern;')
+cmd('abbreviate um use ME;')
+cmd('abbreviate sd say Dumper')
+cmd('abbreviate gold use Getopt::Long::Descriptive;')

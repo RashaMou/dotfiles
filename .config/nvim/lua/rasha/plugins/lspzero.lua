@@ -76,7 +76,6 @@ return {
         "astro",
         "bashls",
         "eslint",
-        "gopls",
         "graphql",
         "html",
         "jsonls",

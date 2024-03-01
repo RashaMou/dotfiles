@@ -14,13 +14,6 @@ keymap.set("n", "<C-l>", "<C-w>l")
 -- buffers
 keymap.set("n", "<C-m>", vim.cmd.bnext)
 keymap.set("n", "<C-n>", vim.cmd.bprev)
-keymap.set("n", ",", vim.cmd.Buffers)
-
--- grep
-keymap.set("n", "<leader>f", vim.cmd.Rg)
-
--- files
-keymap.set("n", "<leader>o", vim.cmd.Files)
 
 -- global substitution
 keymap.set("n", "S",  ":%s///g<LEFT><LEFT><LEFT>")
@@ -31,6 +24,7 @@ keymap.set("n", "<leader><leader>", "<S-v>") -- select the entire line
 
 -- move selected lines up and down
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- paste copied text in place of other text
@@ -38,3 +32,4 @@ keymap.set("x", "<leader>p", "\"_dP")
 
 -- move outside of pair
 keymap.set("i", "<C-\\><C-\\>", "<RIGHT><RIGHT>")
+
