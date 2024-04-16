@@ -15,7 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --- sets up all plugins in rasha.plugin
-require("lazy").setup({ { import = "rasha.plugins" } }, {
+require("lazy").setup({ { import = "rasha.plugins" }, { import = "rasha.plugins.lsp" } }, {
   checker = {
     enabled = true,
     notify = false,

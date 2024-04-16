@@ -62,3 +62,12 @@ cmd('abbreviate umm use ME::Modern;')
 cmd('abbreviate um use ME;')
 cmd('abbreviate sd say Dumper')
 cmd('abbreviate gold use Getopt::Long::Descriptive;')
+
+-- use Black to format python files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        vim.bo.formatprg = "black -"
+    end,
+})
+

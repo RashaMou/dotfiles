@@ -16,7 +16,7 @@ keymap.set("n", "<C-m>", vim.cmd.bnext)
 keymap.set("n", "<C-n>", vim.cmd.bprev)
 
 -- global substitution
-keymap.set("n", "S",  ":%s///g<LEFT><LEFT><LEFT>")
+keymap.set("n", "S", ":%s///g<LEFT><LEFT><LEFT>")
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]]) -- sub for word I am on
 
 -- visual mode
@@ -28,8 +28,10 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- paste copied text in place of other text
-keymap.set("x", "<leader>p", "\"_dP")
+keymap.set("x", "<leader>p", '"_dP')
 
 -- move outside of pair
 keymap.set("i", "<C-\\><C-\\>", "<RIGHT><RIGHT>")
 
+-- oil
+keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
