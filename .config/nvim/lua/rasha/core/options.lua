@@ -9,7 +9,7 @@ opt.relativenumber = true
 opt.tabstop = 2 -- 2 spaces for tabs
 opt.softtabstop = 2
 opt.shiftwidth = 2 -- 2 spaces  for indent width
-opt.expandtab = true -- expand tabs to spaces 
+opt.expandtab = true -- expand tabs to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 opt.smartindent = true
 
@@ -18,8 +18,8 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- folding
- opt.foldmethod = "indent"
- opt.foldlevelstart = 99
+opt.foldmethod = "indent"
+opt.foldlevelstart = 99
 
 -- line wrapping
 opt.wrap = true
@@ -40,14 +40,14 @@ opt.clipboard = "unnamedplus" -- sync with system clipboard
 opt.termguicolors = true
 
 -- navigation
-opt.scrolloff = 8
+opt.scrolloff = 999
 
 -- make naughty characters visible
 opt.list = true
 opt.listchars = {
-  tab = "══»",
-  trail = "␣",
-  nbsp = "˷",
+	tab = "══»",
+	trail = "␣",
+	nbsp = "˷",
 }
 
 -- searching
@@ -56,18 +56,17 @@ opt.incsearch = true
 
 -- abbreviations
 cmd('abbreviate --t TODO(rasha): <C-R>=strftime("%Y-%m-%d")<CR>')
-cmd('abbreviate uddc use Data::Dumper::Concise;')
-cmd('abbreviate upt use Path::Tiny;')
-cmd('abbreviate umm use ME::Modern;')
-cmd('abbreviate um use ME;')
-cmd('abbreviate sd say Dumper')
-cmd('abbreviate gold use Getopt::Long::Descriptive;')
+cmd("abbreviate uddc use Data::Dumper::Concise;")
+cmd("abbreviate upt use Path::Tiny;")
+cmd("abbreviate umm use ME::Modern;")
+cmd("abbreviate um use ME;")
+cmd("abbreviate sd say Dumper")
+cmd("abbreviate gold use Getopt::Long::Descriptive;")
 
 -- use Black to format python files
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "python",
-    callback = function()
-        vim.bo.formatprg = "black -"
-    end,
+	pattern = "python",
+	callback = function()
+		vim.bo.formatprg = "black -"
+	end,
 })
-
