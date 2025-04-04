@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "🏗️ Bootstrapping..."
+
+# Install Homebrew if not present
+if ! command -v brew >/dev/null 2>&1; then
+  echo "🧪 Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Ensure brew path is set in current shell
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Install packages
+brew install \
+  ripgrep \
+  fd \
+  fzf \
+  htop \
+  jq \
+  nvm \
+  pipx \
+  pnpm \
+  starship \
+  tmux \
+  tree \
+  wget \
+  zsh-autosuggestions \
+  zsh-autocomplete \
+  zsh-syntax-highlighting \
+  nvim
+
+# Optional: run fzf install script for shell key bindings
+"$(brew --prefix)/opt/fzf/install" --key-bindings --completion --no-update-rc
+
+echo "✅ Done!"
+
