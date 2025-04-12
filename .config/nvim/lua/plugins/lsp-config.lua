@@ -5,11 +5,11 @@ return {
     opts = {
       ui = {
         icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗"
-        }
-      }
+          package_installed = '✓',
+          package_pending = '➜',
+          package_uninstalled = '✗',
+        },
+      },
     },
   },
 
@@ -21,7 +21,7 @@ return {
         ensure_installed = {
           'lua_ls',
           'ts_ls',
-          'pyright'
+          'pyright',
         },
       }
     end,
@@ -29,33 +29,47 @@ return {
 
   -- For formatters, linters, and other tools
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
     opts = {
       ensure_installed = {
         -- Formatters
-        "prettierd",
+        'prettierd',
         'prettier',
         'stylua',
         'black',
         'isort',
 
         -- Linters
-        'eslint_d'
-      }
-    }
+        'eslint_d',
+      },
+    },
   },
 
   {
     'neovim/nvim-lspconfig',
-    dependencies = { "saghen/blink.cmp" },
+    dependencies = { 'saghen/blink.cmp' },
     config = function()
-      local lspconfig = require("lspconfig")
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      local lspconfig = require 'lspconfig'
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- LS configs
       lspconfig.lua_ls.setup { capabilities = capabilities }
-      lspconfig.ts_ls.setup { capabilities = capabilities }
-
+      lspconfig.ts_ls.setup {
+        capabilities = capabilities,
+        handlers = {
+          ['textDocument/publishDiagnostics'] = function(_, result, ctx, config)
+            if result.diagnostics then
+              result.diagnostics = vim.tbl_filter(function(diagnostic)
+                local ignored_codes = {
+                  [80001] = true, -- Filter out TS80001 (CommonJS -> ESM suggestion)
+                }
+                return not ignored_codes[diagnostic.code]
+              end, result.diagnostics)
+            end
+            vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+          end,
+        },
+      }
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -95,7 +109,7 @@ return {
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
           -- Define element under cursor
-          map('K', vim.lsp.buf.hover, "Hover")
+          map('K', vim.lsp.buf.hover, 'Hover')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -145,6 +159,6 @@ return {
           end
         end,
       })
-    end
-  }
+    end,
+  },
 }
